@@ -1,0 +1,80 @@
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+@import "variables";
+
+body {
+  background: $primary-background-color;
+  font-family: 'Dosis';
+  line-height: 1em;
+}
+
+h1, h2, h3 {
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.75em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 0;
+}
+
+@media (min-width: $screen-md-min) {
+  h1 { font-size: 4em; }
+  h2 { font-size: 2em; }
+  h3 { font-size: 1.2em; }
+}
+
+p {
+  margin: 0 0 24px 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.btn-my-default {
+  border: solid 2px $primary-foreground-color;
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 8px 24px;
+}
+
+.btn-my-default.btn-my-muted {
+  border: solid 2px #999999;
+  cursor: not-allowed;
+}
+
+a.btn-my-default,
+a.btn-my-default:link,
+a.btn-my-default:visited,
+a.btn-my-default:hover {
+  color: $primary-foreground-color;
+}
+
+a.btn-my-default.btn-my-muted,
+a.btn-my-default.btn-my-muted:link,
+a.btn-my-default.btn-my-muted:visited,
+a.btn-my-default.btn-my-muted:hover {
+  color: #999999;
+}
+
+.material-orange { color: #ff9800; }
+.material-green { color: #8bc34a; }
+.material-blue { color: #2196f3; }
+.material-red { color: #f44336; }
+
+// Individual page styles.
+@import "pages/cover.css";

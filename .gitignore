@@ -1,0 +1,11 @@
+# Node.js Portable Runtime
+.runtime/
+
+# Build directory
+build/
+
+# Node.js modules
+node_modules/
+
+# Bower components
+bower_components/
