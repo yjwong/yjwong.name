@@ -18,14 +18,20 @@ module.exports = function (grunt) {
         }
       }
     },
-    copy: {
-      html: {
-        files: [{
-          expand: true,
-          src: ['*.html'],
-          dest: 'build/'
-        }]
+    assemble: {
+      options: {
+        flatten: true,
+        partials: ['templates/partials/*.hbs'],
+        layoutdir: 'templates/layouts',
+        layout: 'default.hbs'
       },
+      site: {
+        files: {
+          'build/': ['templates/*.hbs']
+        }
+      }
+    },
+    copy: {
       js: {
         files: [{
           expand: true,
@@ -95,13 +101,6 @@ module.exports = function (grunt) {
           livereload: true
         }
       },
-      html: {
-        files: ['*.html'],
-        tasks: [
-          'wiredep',
-          'copy:html'
-        ]
-      },
       js: {
         files: ['js/**'],
         tasks: [
@@ -124,16 +123,27 @@ module.exports = function (grunt) {
       misc: {
         files: ['misc/**'],
         tasks: ['copy:misc']
+      },
+      templates: {
+        files: ['templates/**'],
+        tasks: [
+          'wiredep',
+          'assemble'
+        ]
       }
     },
     wiredep: {
       all: {
-        src: ['*.html', 'css/*.scss']
+        src: ['css/*.scss', 'templates/layouts/*.hbs'],
+        options: {
+          ignorePath: '../../'
+        }
       }
     }
   });
   
   // Load Grunt tasks.
+  grunt.loadNpmTasks('grunt-assemble');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -150,6 +160,7 @@ module.exports = function (grunt) {
     'sass:development',
     'autoprefixer:development',
     'jshint',
+    'assemble',
     'connect',
     'watch'
   ]);
@@ -161,7 +172,7 @@ module.exports = function (grunt) {
     'autoprefixer:development',
     'uglify:production',
     'jshint',
-    'copy:html',
+    'assemble',
     'copy:img',
     'copy:bower',
     'copy:misc'
