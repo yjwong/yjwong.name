@@ -13,7 +13,7 @@ module.exports = function (grunt) {
       development: {
         options: {
           base: ['build/', '.'],
-          hostname: '0.0.0.0',
+          hostname: 'localhost',
           livereload: true
         }
       }

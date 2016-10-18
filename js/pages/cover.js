@@ -7,9 +7,9 @@
 (function () {
   'use strict';
 
-  jQuery(document).on('ready', function () {
+  jQuery(function () {
     jQuery('[data-toggle="tooltip"]').tooltip();
-    
+
     // Set up the ambitions ticker.
     var ambitions = document.getElementsByClassName('ambition-ticker');
     var ambitionsTickCount = 0;
@@ -19,14 +19,14 @@
       if (prevAmbitionId < 0) {
         prevAmbitionId = ambitions.length - 1;
       }
-      
+
       jQuery(ambitions[prevAmbitionId]).hide();
       jQuery(ambitions[ambitionId]).show();
-      
+
       ambitionsTickCount++;
       setTimeout(ambitionsTickerFunc, 2000);
     };
-    
+
     ambitionsTickerFunc();
   });
 } ());
